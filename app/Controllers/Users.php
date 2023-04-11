@@ -68,7 +68,7 @@ class Users extends BaseController
             foreach ($users as $user) {
                 $buttons = '';
                 // current user should not be able to delete himself
-                if($this->user['id_user'] != $user['id_user']){
+                if($this->user['id_user'] != $user['id_user'] && -1 != $user['status']){
                     $buttons .= '<button onclick="users.deleteUser(\'' . $user['user_ref'] . '\')" class="mr-2 btn btn-outline-danger btn-icon waves-effect waves-themed"><i class="fal fa-times"></i></a>';
                 }
                 $buttons .= '<button onclick="users.getUserForm(\'' . $user['user_ref'] . '\')" class="mr-2 btn btn-outline-warning btn-icon waves-effect waves-themed"><i class="fal fa-pencil"></i></a>';
