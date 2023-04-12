@@ -1,4 +1,4 @@
-# CF Partner Mehmet Test
+# CF Partners Mehmet Test
 
 A simple CRUD application to manage details and credentials of users with CI4 and SmartAdmin template. 
 
