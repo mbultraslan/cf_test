@@ -21,6 +21,7 @@ class Users extends BaseController
             'Users' => site_url('/users')
         ];
 
+        // the buttons we want to show on top right side
         $this->data['buttons'] = [
             [
                 'action' => 'users.getUserForm(0)',
@@ -38,7 +39,6 @@ class Users extends BaseController
             'title' => 'Users Page',
             'page_icon' => 'fal fa-users',
             'page_description' => 'List of users',
-            'page_right_header' => 'something about users to write on right side',
         ]);
         return view('users/users', $data);
     }
@@ -68,7 +68,7 @@ class Users extends BaseController
             foreach ($users as $user) {
                 $buttons = '';
                 // current user should not be able to delete himself
-                if($this->user['id_user'] != $user['id_user'] && -1 != $user['status']){
+                if ($this->user['id_user'] != $user['id_user'] && -1 != $user['status']) {
                     $buttons .= '<button onclick="users.deleteUser(\'' . $user['user_ref'] . '\')" class="mr-2 btn btn-outline-danger btn-icon waves-effect waves-themed"><i class="fal fa-times"></i></a>';
                 }
                 $buttons .= '<button onclick="users.getUserForm(\'' . $user['user_ref'] . '\')" class="mr-2 btn btn-outline-warning btn-icon waves-effect waves-themed"><i class="fal fa-pencil"></i></a>';
@@ -228,7 +228,7 @@ class Users extends BaseController
             }
 
             //  if user already been deleted and new status not active then leave it as deleted
-            if($user['status'] == -1 && $data['status'] == 0){
+            if ($user['status'] == -1 && $data['status'] == 0) {
                 unset($data['status']);
             }
 
